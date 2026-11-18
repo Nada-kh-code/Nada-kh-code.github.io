@@ -95,8 +95,6 @@ nav{height:68px;display:flex;align-items:center;gap:18px}
 .me-tag{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:8px;background:var(--panel);color:var(--text);font-weight:800;font-size:.95rem;padding:7px 16px;border-radius:999px;white-space:nowrap;border:1.5px solid var(--line2);box-shadow:var(--shadow)}
 .me-tag i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px color-mix(in srgb,var(--green) 25%,transparent)}
 .me .float{position:absolute;z-index:4;display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line2);padding:9px 14px;border-radius:12px;font-weight:700;font-size:.9rem;box-shadow:var(--shadow);animation:bob 6s ease-in-out infinite;white-space:nowrap}
-.me .f1{right:-70px;top:8%}
-.me .f2{left:-78px;bottom:22%;animation-delay:-3s}
 .me .float svg{color:var(--cyan)}
 .me .float small{display:block;font-weight:500;color:var(--muted);font-size:.76rem;line-height:1.2}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -297,7 +295,6 @@ html{scroll-behavior:auto}
 *,*:before,*:after{animation:none!important;transition:none!important}
 .js .rv{opacity:1;transform:none}
 }
-@media (max-width:1240px){.me .f1{right:-36px}.me .f2{left:-44px}}
 @media (max-width:980px){
 .menu{display:block}
 .navlinks{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:12px 15px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
@@ -322,8 +319,6 @@ html{scroll-behavior:auto}
 .hero h1{font-size:clamp(2.5rem,12vw,3.6rem)}
 .hero .wrap{gap:34px}
 .me .float{padding:7px 11px;font-size:.82rem}
-.me .f1{right:-46px;top:2%}
-.me .f2{left:-50px;bottom:18%}
 .typed{font-size:1.15rem}
 .socials{flex-wrap:wrap;gap:12px 18px}
 .actions .btn{flex:1 1 auto;justify-content:center}
@@ -347,8 +342,6 @@ html{scroll-behavior:auto}
 .mailbox .btn{margin:8px 0 0}
 }
 @media (max-width:400px){
-.me .f1{right:-22px;top:-4%}
-.me .f2{left:-24px;bottom:12%}
 .me .float small{display:none}
 .cls span{padding:7px 10px}
 .pm-metrics{grid-template-columns:1fr}
@@ -416,8 +409,6 @@ html{scroll-behavior:auto}
 <div class="me-orbit" aria-hidden="true"><i></i></div>
 <div class="me-ring"><div class="me-photo"><img src="https://lh3.googleusercontent.com/d/1NOG1vxgBKbeSHLvpeDSI9sPNnKGVT185=s800" alt="Portrait of Nada Khaled Farag" width="640" height="640"></div></div>
 <span class="me-tag"><i></i>Open to ML / AI roles</span>
-<div class="float f1"><svg class="i"><use href="#eye"/></svg><span>Computer vision<small>M.Sc. research</small></span></div>
-<div class="float f2"><svg class="i"><use href="#shield"/></svg><span>AI-900<small>Microsoft certified</small></span></div>
 </div>
 </div>
 </section>
@@ -437,7 +428,7 @@ html{scroll-behavior:auto}
 <li><span class="ic"><svg class="i"><use href="#book"/></svg></span><span><b>Clear communication</b>Readable documentation, reproducible work and demos that non-specialists can use.</span></li>
 </ul>
 </div>
-<div class="facts rv"><span>Menoufia University</span><span>Digilians AI &amp; ML graduate</span><span>Azure AI-900</span><span>Arabic &amp; English</span></div>
+<div class="facts rv"><span>Based in Cairo, Egypt</span><span>Menoufia University</span><span>Digilians AI &amp; ML graduate</span><span>Azure AI-900</span><span>Arabic &amp; English</span></div>
 </div>
 </section>
 <!-- SKILLS -->
@@ -610,12 +601,12 @@ html{scroll-behavior:auto}
 <div class="radar" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap">
 <h2 class="rv">Let’s build something useful.</h2>
-<p class="sub rv">I’m open to Machine Learning and AI Engineer roles, research collaborations and conversations about computer vision and applied AI.</p>
+<p class="sub rv">Based in Cairo, Egypt. I’m open to Machine Learning and AI Engineer roles, research collaborations and conversations about computer vision and applied AI.</p>
 <div class="mailbox rv"><svg class="i" style="color:var(--cyan)"><use href="#mail"/></svg><a href="mailto:nada.5aled98@gmail.com">nada.5aled98@gmail.com</a><button class="btn solid" id="copyBtn">Copy email</button></div>
 <div class="links rv">
 <a class="btn" href="https://www.linkedin.com/in/nada-khaled-n" target="_blank" rel="noopener"><svg class="i"><use href="#in"/></svg>LinkedIn</a>
 <a class="btn" href="https://github.com/Nada-kh-code" target="_blank" rel="noopener"><svg class="i"><use href="#gh"/></svg>GitHub</a>
-<a class="btn" href="tel:+201001194983"><svg class="i"><use href="#phone"/></svg>+20 100 119 4983</a>
+<button class="btn" id="phoneBtn" aria-live="polite"><svg class="i"><use href="#phone"/></svg><span>Show phone number</span></button>
 <a class="btn" href="https://drive.google.com/file/d/1z7eZ9uHqVcB5J5mYh3O7BGwbxAXvjIJW/view" target="_blank" rel="noopener"><svg class="i"><use href="#doc"/></svg>Download CV</a>
 </div>
 </div>
@@ -803,6 +794,8 @@ det.querySelectorAll('g[data-o]').forEach(g=>{g.classList.toggle('miss',s.miss.i
 /* research ghost boxes, education particles */
 const gh=$('#ghosts');for(let i=0;i<9;i++){const b=document.createElement('i');b.style.left=(5+Math.random()*88)+'%';b.style.top=(5+Math.random()*85)+'%';b.style.width=(40+Math.random()*90)+'px';b.style.height=(30+Math.random()*70)+'px';b.style.animationDelay=(-Math.random()*9)+'s';gh.appendChild(b)}
 const rs=$('#rise');for(let i=0;i<34;i++){const p=document.createElement('i');p.style.left=(Math.random()*100)+'%';const s=3+Math.random()*6;p.style.width=p.style.height=s+'px';p.style.animationDuration=(14+Math.random()*16)+'s';p.style.animationDelay=(-Math.random()*30)+'s';rs.appendChild(p)}
+/* phone: hidden until clicked */
+const pb=$('#phoneBtn');pb.addEventListener('click',()=>{const n=['+20','100','119','4983'];const a=document.createElement('a');a.className='btn';a.href='tel:'+n.join('');a.innerHTML='<svg class="i"><use href="#phone"/></svg>'+n.join(' ');pb.replaceWith(a);a.focus()},{once:true});
 /* copy email */
 const cb=$('#copyBtn');cb.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('nada.5aled98@gmail.com');cb.textContent='Copied'}catch(e){cb.textContent='Select it to copy'}setTimeout(()=>cb.textContent='Copy email',1800)});
 /* ---------- canvas backgrounds ---------- */
